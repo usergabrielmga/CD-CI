@@ -1,0 +1,21 @@
+name: Continuos delivery
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - name: simulando delivery
+        uses: actions/upload-artifact@v7
+        with:
+          name: projeto-zipado.zip
+          path: |
+            main
+            readme.md
