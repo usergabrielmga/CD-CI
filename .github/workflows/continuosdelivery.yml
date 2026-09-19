@@ -38,23 +38,22 @@ jobs:
     steps:
       - name: Verificar webhook
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD: ${{ secrets.DISCORD }}
         run: |
-          if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "ERRO: DISCORD_WEBHOOK está vazio."
+          if [ -z "$DISCORD" ]; then
+            echo "ERRO: DISCORD está vazio."
             exit 1
           fi
-          
+
           echo "Webhook encontrado."
-          echo "Tamanho do webhook: ${#DISCORD_WEBHOOK}"
+          echo "Tamanho do webhook: ${#DISCORD}"
 
       - name: Enviar alerta para Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD }}
+          DISCORD: ${{ secrets.DISCORD }}
         run: |
           curl --fail-with-body \
             -H "Content-Type: application/json" \
             -X POST \
             --data-raw '{"content":"🚀 GitHub Actions executado com sucesso!"}' \
-            "$DISCORD_WEBHOOK"
-            "$DISCORD_WEBHOOK"
+            "$DISCORD"
