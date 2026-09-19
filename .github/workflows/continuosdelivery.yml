@@ -50,7 +50,7 @@ jobs:
 
       - name: Enviar alerta para Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD }}
         run: |
           curl --fail-with-body \
             -H "Content-Type: application/json" \
